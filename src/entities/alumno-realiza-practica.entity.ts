@@ -4,7 +4,6 @@ import { Practica } from './practica.entity';
 
 @Entity()
 export class AlumnoRealizaPractica {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -14,9 +13,9 @@ export class AlumnoRealizaPractica {
   @Column({ type: 'decimal', precision: 4, scale: 2 })
   nota: number;
 
-  @ManyToOne(() => Alumno, alumno => alumno.practicas)
+  @ManyToOne(() => Alumno, (alumno) => alumno.practicas, { onDelete: 'CASCADE' })
   alumno: Alumno;
 
-  @ManyToOne(() => Practica, practica => practica.alumnos)
+  @ManyToOne(() => Practica, (practica) => practica.alumnos, { onDelete: 'CASCADE' })
   practica: Practica;
 }

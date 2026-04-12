@@ -1,10 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { AlumnoRealizaPractica } from './alumno-realiza-practica.entity';
 
 @Entity()
 export class Alumno {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -23,7 +21,6 @@ export class Alumno {
   @Column({ nullable: true })
   apellido2: string;
 
-  @OneToMany(() => AlumnoRealizaPractica, arp => arp.alumno, { cascade: true })
+  @OneToMany(() => AlumnoRealizaPractica, (arp) => arp.alumno, { cascade: true })
   practicas: AlumnoRealizaPractica[];
-
 }
